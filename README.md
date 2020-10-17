@@ -1,2 +1,2 @@
-# aisd_SDA
-Algorithms and data structures - SDA course
+# Algorithms and data structures
+SDA course
