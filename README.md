@@ -2,6 +2,6 @@
 SDA online course
 
 ```javascript
-*17.10
-*18.10
+⋅⋅* 17.10
+⋅⋅* 18.10
 ```
