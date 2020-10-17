@@ -1,2 +1,7 @@
 # Algorithms and data structures
-SDA course
+SDA online course
+
+```javascript
+*17.10
+*18.10
+```
