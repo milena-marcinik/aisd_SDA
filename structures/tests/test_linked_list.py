@@ -80,6 +80,18 @@ class TestLinkedList(TestCase):
         with self.assertRaises(IndexError):
             value = values[200]
 
+    def test_set_item_first_element(self):
+        values = LinkedList[int](1, 2, 3, 4, 5, 6)
+        values[0] = 3
+
+        self.assertEqual(str(values), "[3, 2, 3, 4, 5, 6]")
+
+    def test_set_item_last_element(self):
+        values = LinkedList[int](9, 5, 1)
+        values.__setitem__(2, 2)
+
+        self.assertEqual(str(values), "[9, 5, 2]")
+
 
 if __name__ == '--main--':
     main()

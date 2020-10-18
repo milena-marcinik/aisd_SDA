@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from typing import Generic, Optional
 
-from structures.types import T
+from structures.own_types import T
 
 
 class AbstractQueue(ABC, Generic[T]):
@@ -40,7 +40,7 @@ class Stack(AbstractQueue[T]):
             self.top = node
             pass
 
-    def pop(self) -> T: #nie typujemy wyjatkow
+    def pop(self) -> T:  # nie typujemy wyjatkow
         if self.top is not None:
             value = self.top.value
             self.top = self.top.next

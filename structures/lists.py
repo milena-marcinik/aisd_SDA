@@ -99,4 +99,14 @@ class LinkedList(List[T]):
             raise IndexError("list index out of range")
 
     def __setitem__(self, index: int, element: T) -> None:
-        pass
+        pointer = self.head
+        pointer_index = 0
+
+        while pointer_index != index:
+            pointer_index += 1
+            pointer = pointer.next
+
+        if pointer is None:
+            raise IndexError("list index out of range")
+
+        pointer.value = element
