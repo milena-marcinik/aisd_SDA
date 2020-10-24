@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Any
 
 
 def search(values: List[int], target: int):
@@ -27,7 +27,7 @@ def binary_search(values: List[int], target: int, left: int, right: int):
 if __name__ == "__main__":
     numbers = [5, 7, 9, 10, 14, 33]
 
-    length = 100000000
+    length = 10
     values = list(range(1, length + 1))
     print(search(values, length))
 
