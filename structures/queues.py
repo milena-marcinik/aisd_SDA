@@ -95,8 +95,8 @@ class FifoQueue(AbstractQueue[T]):
             raise FifoQueue.EmptyQueueError()
 
     def front(self) -> T:
-        if self.end is not None:
-            return self.end.value
+        if self.head is not None:
+            return self.head.value
         else:
             raise FifoQueue.EmptyQueueError()
 
