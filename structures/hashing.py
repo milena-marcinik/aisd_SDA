@@ -1,54 +1,41 @@
 from abc import ABC, abstractmethod
-from typing import Any, List
-
-from structures.lists import LinkedList
+from typing import Any
 
 
-class Set(ABC):
+class HashFunction(ABC):
     @abstractmethod
-    def add(self, value: Any) -> None:
-        pass
-
-    @abstractmethod
-    def remove(self, value: Any) -> None:
-        pass
-
-    @abstractmethod
-    def clear(self):
-        pass
-
-    @abstractmethod
-    def __contains__(self, item: Any):
+    def hash(self, value: Any) -> int:
         pass
 
 
-class HashSet(Set):
-    def __init__(self, initial_bucket_size: int = 4, payload_factor: float = 0.75, increase_factor: int = 2):
-        self.initial_buckets_size = initial_bucket_size
-        self.payload_factor = payload_factor
-        self.increase_factor = increase_factor
+class NaiveHashFunction(HashFunction):
+    def hash(self, value: Any) -> int:
+        return 2
 
-        self.buckets = self.create_empty_buckets(self.initial_buckets_size)
-
-    def add(self, value: Any) -> None:
+    def hash_string(self, value: str) -> int:
         pass
 
-    def remove(self, value: Any) -> None:
+    def hash_int(self, value: int) -> int:
         pass
 
-    def clear(self):
+    def hash_bool(self, value: bool) -> int:
         pass
 
-    def __contains__(self, item: Any):
-        pass
 
-    def create_empty_buckets(self, buckets_count: int) -> List[LinkedList]:
-        return [LinkedList() for _ in range(buckets_count)]
+class PrimeHashFunction(HashFunction):
+    def __init__(self):
+        self.hashes = {
+            str: self.hash_string
+        }
 
-    def buckets_string(self) -> str:
-        return "\n".join([f"{i:3} -> {str(bucket)}" for i, bucket in enumerate(self.buckets)])
+    def hash(self, value: Any) -> int:
+        return self.hashes[type(value)](value)
 
+    def hash_string(self, value: str) -> int:
+        result = 7
+        prime = 31
 
-if __name__ == '__main__':
-    values = HashSet()
-    print(values.buckets_string())
+        for sign in value:
+            result = result * prime + ord(sign)
+
+        return result
